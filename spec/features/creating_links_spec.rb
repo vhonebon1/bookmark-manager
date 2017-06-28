@@ -22,6 +22,5 @@ feature 'creating links' do
     click_button 'Add bookmark'
     link = Link.first
     expect(link.tags.map(&:name)).to include('social')
-    end
-
+  end
 end

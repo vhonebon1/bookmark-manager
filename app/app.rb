@@ -22,4 +22,8 @@ class Bookmark_manager < Sinatra::Base
     redirect to('/links')
   end
 
+  get '/tags/bubbles' do
+    "Hello"
+  end
+
 end
