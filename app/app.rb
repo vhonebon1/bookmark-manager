@@ -3,6 +3,8 @@ ENV['RACK_ENV'] ||= 'development'
 require 'sinatra'
 require_relative './models/link.rb'
 require_relative './models/tag.rb'
+require_relative 'data_mapper_config'
+
 class Bookmark_manager < Sinatra::Base
 
   get '/links' do
@@ -22,8 +24,10 @@ class Bookmark_manager < Sinatra::Base
     redirect to('/links')
   end
 
-  get '/tags/bubbles' do
-    "Hello"
+  get '/tags/:name' do
+    tag = Tag.first(name: params[:name])
+    @links = tag ? tag.links : []
+    erb :'links/index'
   end
 
 end

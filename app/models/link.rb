@@ -11,12 +11,5 @@ class Link
   property :id,     Serial
   property :title,  String
   property :url,    String
-  #property :tag,    String
-
 
 end
-
-env = ENV['RACK_ENV'] || 'development'
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark_manager_#{env}")
-DataMapper.finalize
-DataMapper.auto_upgrade!
