@@ -4,4 +4,8 @@ feature "Creating a user" do
     expect(page).to have_content "Welcome, kitty@example.com!"
     expect(User.first.email).to eq 'kitty@example.com'
   end
+
+  scenario 'Checks whether the two passwords enetered are the same' do
+    expect { new_user }.to change(User, :count).by 0
+  end
 end
