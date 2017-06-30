@@ -22,6 +22,7 @@ require './app/models/link'
 require './app/app'
 require "database_cleaner"
 require "dm-transactions"
+require 'web_helper.rb'
 
 Capybara.app = Bookmark_manager
 
