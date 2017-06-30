@@ -10,3 +10,4 @@ gem "rspec"
 gem "capybara"
 gem "database_cleaner"
 gem "dm-transactions"
+gem 'bcrypt'

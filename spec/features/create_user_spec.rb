@@ -1,8 +1,7 @@
 feature "Creating a user" do
   scenario 'I can create a new user account' do
-    new_user
-    expect(page).to have_content "Welcome!"
-    expect(page).to have_content "vhonebon@gmail.com"
-    expect(User.first.count).to eq 1
+    expect { new_user }.to change(User, :count).by 1
+    expect(page).to have_content "Welcome, kitty@example.com!"
+    expect(User.first.email).to eq 'kitty@example.com'
   end
 end
