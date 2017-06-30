@@ -6,6 +6,7 @@ feature "Creating a user" do
   end
 
   scenario 'Checks whether the two passwords enetered are the same' do
-    expect { new_user(password_confirmation: 'Wrong') }.not_to change(User, :count)
+    expect { new_user(password_confirmation: 'wrong') }.not_to change(User, :count)
+    expect(page).to have_content("Password and confirmation password do not match")
   end
 end

@@ -11,3 +11,5 @@ gem "capybara"
 gem "database_cleaner"
 gem "dm-transactions"
 gem 'bcrypt'
+gem 'sinatra-flash'
+gem 'rake'

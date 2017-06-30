@@ -1,6 +1,7 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra'
+require 'sinatra/flash'
 require_relative './models/link.rb'
 require_relative './models/tag.rb'
 require_relative 'data_mapper_config'
@@ -9,6 +10,7 @@ class Bookmark_manager < Sinatra::Base
 
   enable :sessions
   set :session_secret, 'super secret'
+  register Sinatra::Flash
 
   get '/links' do
     @links = Link.all
@@ -43,7 +45,11 @@ class Bookmark_manager < Sinatra::Base
                        password: params[:password],
                        password_confirmation: params[:password_confirmation])
     session[:user_id] = user.id
-    redirect to('/links')
+    if session[:user_id]
+      redirect to('/links')
+    else
+      flash[:error] = "Password and confirmation password do not match"
+    end
   end
 
   helpers do
